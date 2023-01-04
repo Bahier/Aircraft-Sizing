@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from Aerodynamics import *
-
+from TestAircraft import *
+from Propulsion import *
 """CL/CD vs CL"""
 
 Lref = [9.178, 5.3, 83.210, 53.800, 11.7, 6.6, 4.975, 6.608]
@@ -44,3 +45,10 @@ for height in altitude:
 
 plt.plot(altitude, Cdp)
 plt.show()
+
+"""Propulsion"""
+print(referenceAircraft)
+engineScaling(referenceAircraft["engine"]["Geom"], testAircraft["l_e"])
+engineScaling(referenceAircraft["engine"]["Thrust"],testAircraft["k_FN"])
+thrustMCL(testAircraft["engine"]["Thrust"]["MCL"],57182)
+print(testAircraft)
